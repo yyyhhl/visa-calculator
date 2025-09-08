@@ -139,7 +139,6 @@ function calculateResults() {
             document.getElementById('maxDate').textContent = formatDate(maxExit);
             document.getElementById('remainingDays').textContent = remainingDays;
             document.getElementById('importantTip1').textContent = '若境内续签 使得停留超过90天 请尽快开启工签流程 不要出境否则二次入境海关可能拒绝入境';
-
         }
     } else {
         document.getElementById('inCountryResult').style.display = 'none';
