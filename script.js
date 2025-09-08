@@ -114,26 +114,37 @@ function calculateResults() {
     });
 
     if (currentEntry) {
-        document.getElementById('inCountryResult').style.display = 'block';
-        document.getElementById('outCountryResult').style.display = 'none';
-        
-        const entryDate = new Date(currentEntry);
-        const maxDays = Math.min(90, remainingDays);
-        const recDays = Math.min(70, remainingDays);
+        if (remainingDays <= 0) {
+            document.getElementById('inCountryResult').style.display = 'none';
+            document.getElementById('outCountryResult').style.display = 'none';
+            document.getElementById('importantTips').style.display = 'block';
+            document.getElementById('importantTip1').textContent = '总停留超过180天 不能再出境 需要在境内获取RNM后再正常出入境';
+        } else {
+            document.getElementById('inCountryResult').style.display = 'block';
+            document.getElementById('outCountryResult').style.display = 'none';
+            document.getElementById('importantTips').style.display = 'block';
 
-        const maxExit = new Date(entryDate);
-        maxExit.setDate(entryDate.getDate() + maxDays);
-        
-        const recExit = new Date(entryDate);
-        recExit.setDate(entryDate.getDate() + recDays);
+            const entryDate = new Date(currentEntry);
+            const maxDays = Math.min(90, remainingDays);
+            const recDays = Math.min(70, remainingDays);
 
-        document.getElementById('currentEntryDisplay').textContent = currentEntry;
-        document.getElementById('recommendedDate').textContent = formatDate(recExit);
-        document.getElementById('maxDate').textContent = formatDate(maxExit);
-        document.getElementById('remainingDays').textContent = remainingDays;
+            const maxExit = new Date(entryDate);
+            maxExit.setDate(entryDate.getDate() + maxDays);
+
+            const recExit = new Date(entryDate);
+            recExit.setDate(entryDate.getDate() + recDays);
+
+            document.getElementById('currentEntryDisplay').textContent = currentEntry;
+            document.getElementById('recommendedDate').textContent = formatDate(recExit);
+            document.getElementById('maxDate').textContent = formatDate(maxExit);
+            document.getElementById('remainingDays').textContent = remainingDays;
+            document.getElementById('importantTip1').textContent = '若境内续签 使得停留超过90天 请尽快开启工签流程 不要出境否则二次入境海关可能拒绝入境';
+
+        }
     } else {
         document.getElementById('inCountryResult').style.display = 'none';
         document.getElementById('outCountryResult').style.display = 'block';
+        document.getElementById('importantTips').style.display = 'none';
         document.getElementById('remainingDays').textContent = remainingDays;
     }
 }
