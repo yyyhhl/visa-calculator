@@ -137,8 +137,10 @@ button.danger:hover {
 
 .important-tip {
     color: #e74c3c;
-    font-size: 0.9em;
-    margin-left: 10px;
+    font-weight: 500;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd;
 }
 
 .total-days {
